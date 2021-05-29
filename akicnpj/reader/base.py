@@ -5,7 +5,6 @@ from pandas.io.parsers import TextFileReader
 from pandas import DataFrame
 
 
-
 class AkiReader(object):
     __pd_reader: TextFileReader = None
     __open_settings: dict = {}
