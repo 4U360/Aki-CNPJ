@@ -35,61 +35,61 @@ class AkiFinder(object):
             yield file
 
     def __find_empresa(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.EMPRECSV.zip")
+        path = self.__path.joinpath("*.EMPRECSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_estabelecimento(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.ESTABELE.zip")
+        path = self.__path.joinpath("*.ESTABELE*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_socio(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.SOCIOCSV.zip")
+        path = self.__path.joinpath("*.SOCIOCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_simples(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.SIMPLES.CSV.*.zip")
+        path = self.__path.joinpath("*.SIMPLES.CSV.*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_cnae(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.CNAECSV.zip")
+        path = self.__path.joinpath("*.CNAECSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_municipio(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.MUNICCSV.zip")
+        path = self.__path.joinpath("*.MUNICCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_natureza_juridica(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.NATJUCSV.zip")
+        path = self.__path.joinpath("*.NATJUCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_pais(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.PAISCSV.zip")
+        path = self.__path.joinpath("*.PAISCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_qsa(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.QUALSCSV.zip")
+        path = self.__path.joinpath("*.QUALSCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
 
     def __find_situacao_cadastral(self) -> Iterator[Path]:
-        path = self.__path.joinpath("*.MOTICSV.zip")
+        path = self.__path.joinpath("*.MOTICSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
             yield Path(file)
