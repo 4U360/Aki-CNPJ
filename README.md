@@ -5,7 +5,7 @@ Aki CNPJ is a Python package that aims to facilitate access to the "Public Data 
 We use `python` version `3.9.4`
 
 ## Example Charts
-![Empresas por Porte](./charts/empresa_por_porte.png)
+![Empresas por Porte](./charts/empresa_por_porte.png | width=100)
 
 ## Roadmap
 - [ ] Change test files to relative paths
