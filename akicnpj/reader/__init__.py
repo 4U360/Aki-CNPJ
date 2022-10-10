@@ -7,3 +7,4 @@ from .simples import AkiSimplesReader
 from .situacao_cadastral import AkiSituacaoCadastralReader
 from .estabelecimento import AkiEstabelecimentoReader
 from .socios import AkiSociosReader
+from .qsa import AkiQSAReader

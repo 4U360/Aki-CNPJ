@@ -1,6 +1,6 @@
 from os import makedirs
 from .base import AkiDownloader
-from ..settings import ROOT, Path
+from ..settings import ROOT, Path, AKI_FILE_PATTERN_SIMPLES
 
 
 class AkiSimplesDownloader(AkiDownloader):
@@ -9,7 +9,7 @@ class AkiSimplesDownloader(AkiDownloader):
         makedirs(str(path), exist_ok=True)
 
         for file in self.files:
-            if ".SIMPLES.CSV." in file.name and file.name.endswith(".zip"):
+            if bool(AKI_FILE_PATTERN_SIMPLES.match(file.name)):
                 full_path = path.joinpath(file.name)
                 if not ignore_exists and full_path.exists():
                     self.logger.info(f"File {full_path} already exists, skipping...")

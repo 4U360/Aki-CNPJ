@@ -1,6 +1,6 @@
 from os import makedirs
 from .base import AkiDownloader
-from ..settings import ROOT, Path
+from ..settings import ROOT, Path, AKI_FILE_PATTERN_QSA
 
 
 class AkiQSADownloader(AkiDownloader):
@@ -9,7 +9,7 @@ class AkiQSADownloader(AkiDownloader):
         makedirs(str(path), exist_ok=True)
 
         for file in self.files:
-            if file.name.endswith("QUALSCSV.zip"):
+            if bool(AKI_FILE_PATTERN_QSA.match(file.name)):
 
                 full_path = path.joinpath(file.name)
                 if not ignore_exists and full_path.exists():
