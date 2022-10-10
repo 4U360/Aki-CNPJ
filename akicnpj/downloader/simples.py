@@ -11,6 +11,7 @@ class AkiSimplesDownloader(AkiDownloader):
         for file in self.files:
             if bool(AKI_FILE_PATTERN_SIMPLES.match(file.name)):
                 full_path = path.joinpath(file.name)
+                yield full_path
                 if not ignore_exists and full_path.exists():
                     self.logger.info(f"File {full_path} already exists, skipping...")
                     continue

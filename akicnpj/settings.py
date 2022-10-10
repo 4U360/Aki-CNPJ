@@ -6,6 +6,7 @@ CHUNKSIZE: int = 10 ** 6 if getenv("AKI_CHUNKSIZE", None) else int(getenv("AKI_C
 DOWNLOAD_URL: str = getenv("AKI_URL", "http://200.152.38.155/CNPJ/")
 ROOT: Path = Path(__file__).parent
 
+# Regex patterns
 AKI_FILE_PATTERN_CNAE = re.compile(getenv("AKI_FILE_PATTERN_CNAE", "Cnaes.zip"))
 AKI_FILE_PATTERN_EMPRESA = re.compile(getenv("AKI_FILE_PATTERN_EMPRESA", "Empresas\d+.zip"))
 AKI_FILE_PATTERN_SOCIOS = re.compile(getenv("AKI_FILE_PATTERN_SOCIOS", "Socios\d+.zip"))
@@ -17,4 +18,8 @@ AKI_FILE_PATTERN_PAISES = re.compile(getenv("AKI_FILE_PATTERN_PAISES", "Paises.z
 AKI_FILE_PATTERN_QSA = re.compile(getenv("AKI_FILE_PATTERN_QSA", "Qualificacoes.zip"))
 AKI_FILE_PATTERN_SITUACAO_CADASTRAL = re.compile(getenv("AKI_FILE_PATTERN_SITUACAO_CADASTRAL", "Motivos.zip"))
 
+
+# Elastic Settings
 AKI_ELASTIC_CNAE_INDEX = getenv("AKI_ELASTIC_CNAE_INDEX", "cnae-index")
+AKI_ELASTIC_SITUACAO_CADASTRAL_INDEX = getenv("AKI_ELASTIC_CNAE_INDEX", "situacao-cadastral-index")
+AKI_ELASTIC_MUNICIPIO_INDEX = getenv("AKI_ELASTIC_MUNICIPIO_INDEX", "municipio-index")
