@@ -7,10 +7,8 @@ class AkiEmpresaDownloader(AkiDownloader):
 
     def download(self, path: Path = ROOT.parent.joinpath("data"), ignore_exists: bool = False):
         makedirs(str(path), exist_ok=True)
-
         for file in self.files:
             if file.name.endswith("EMPRECSV.zip"):
-
                 full_path = path.joinpath(file.name)
 
                 if not ignore_exists and full_path.exists():

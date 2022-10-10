@@ -2,6 +2,7 @@ from glob import iglob
 from typing import Iterator
 from .settings import ROOT, Path
 from itertools import chain
+from .data.finder import FinderFile, FileCategory
 
 
 class AkiFinder(object):
@@ -16,7 +17,7 @@ class AkiFinder(object):
         self.__path = path
         self.__recursive = recursive
 
-    def search(self) -> Iterator[Path]:
+    def search(self) -> Iterator[FinderFile]:
         empresa_ = self.__find_empresa()
         estabelecimento_ = self.__find_estabelecimento()
         socio_ = self.__find_socio()
@@ -34,62 +35,62 @@ class AkiFinder(object):
         for file in files:
             yield file
 
-    def __find_empresa(self) -> Iterator[Path]:
+    def __find_empresa(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.EMPRECSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.COMPANY)
 
-    def __find_estabelecimento(self) -> Iterator[Path]:
+    def __find_estabelecimento(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.ESTABELE*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.ESTABLISHMENT)
 
-    def __find_socio(self) -> Iterator[Path]:
+    def __find_socio(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.SOCIOCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.PARTNER)
 
-    def __find_simples(self) -> Iterator[Path]:
+    def __find_simples(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.SIMPLES.CSV.*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.SIMPLE)
 
-    def __find_cnae(self) -> Iterator[Path]:
+    def __find_cnae(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.CNAECSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.CNAE)
 
-    def __find_municipio(self) -> Iterator[Path]:
+    def __find_municipio(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.MUNICCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.CITY)
 
-    def __find_natureza_juridica(self) -> Iterator[Path]:
+    def __find_natureza_juridica(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.NATJUCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.LEGAL_NATURE)
 
-    def __find_pais(self) -> Iterator[Path]:
+    def __find_pais(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.PAISCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.COUNTRY)
 
-    def __find_qsa(self) -> Iterator[Path]:
+    def __find_qsa(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.QUALSCSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.CORPORATE_STRUCTURE)
 
-    def __find_situacao_cadastral(self) -> Iterator[Path]:
+    def __find_situacao_cadastral(self) -> Iterator[FinderFile]:
         path = self.__path.joinpath("*.MOTICSV*")
 
         for file in iglob(str(path), recursive=self.__recursive):
-            yield Path(file)
+            yield FinderFile(path=Path(file), category=FileCategory.CADASTRAL_SITUATION)

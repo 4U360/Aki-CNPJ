@@ -1,3 +1,4 @@
+import decimal
 import itertools
 from typing import Iterator
 from requests import Session
@@ -49,7 +50,6 @@ class AkiDownloader(object):
         soup = BeautifulSoup(page, "html.parser")
         title = soup.find("title").text
         assert title == "Index of /CNPJ"
-
         for tr in soup.find_all("tr"):
             tds = tr.find_all("td")
 
@@ -60,7 +60,10 @@ class AkiDownloader(object):
                 if is_parent:
                     continue
                 else:
-                    yield self.__html_to_file(tr.find_all("td"))
+                    try:
+                        yield self.__html_to_file(tr.find_all("td"))
+                    except decimal.InvalidOperation:
+                        continue
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.__session.close()

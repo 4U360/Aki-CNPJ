@@ -1,7 +1,9 @@
 from akicnpj.downloader import *
 
 if __name__ == "__main__":
-    AkiEmpresaDownloader().download()
+    for file in AkiEmpresaDownloader().download():
+        print(file)
+    exit(0)
     AkiEstabelecimentoDownloader().download()
     AkiSocioDownloader().download()
     AkiSimplesDownloader().download()

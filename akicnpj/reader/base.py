@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+import pathlib
 from typing import Iterator
 from akicnpj.settings import CHUNKSIZE
 from akicnpj.object.base import AkiObject
@@ -67,7 +70,11 @@ class AkiReader(object):
                                         names=self.header,
                                         **self.settings)
 
-    def __init__(self, filename: str, **settings):
+    def __init__(self, filename: str | pathlib.Path, **settings):
+
+        if isinstance(filename, pathlib.Path):
+            filename = str(filename)
+
         assert isinstance(filename, str)
         self.__filename = filename
 

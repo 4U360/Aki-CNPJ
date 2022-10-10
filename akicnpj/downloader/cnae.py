@@ -1,17 +1,20 @@
 from os import makedirs
+from typing import Iterator
 from .base import AkiDownloader
-from ..settings import ROOT, Path
+from ..settings import ROOT, Path, AKI_FILE_PATTERN_CNAE
 
 
 class AkiCnaeDownloader(AkiDownloader):
 
-    def download(self, path: Path = ROOT.parent.joinpath("data"), ignore_exists: bool = False):
+    def download(self, path: Path = ROOT.parent.joinpath("data"), ignore_exists: bool = False) -> Iterator[Path]:
         makedirs(str(path), exist_ok=True)
 
         for file in self.files:
-            if file.name.endswith("CNAECSV.zip"):
+            if bool(AKI_FILE_PATTERN_CNAE.match(file.name)):
 
                 full_path = path.joinpath(file.name)
+                yield full_path
+
                 if not ignore_exists and full_path.exists():
                     self.logger.info(f"File {full_path} already exists, skipping...")
                     continue
